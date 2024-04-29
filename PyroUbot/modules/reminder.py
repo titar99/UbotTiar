@@ -42,7 +42,6 @@ reminders = []
 @PY.UBOT("remind")
 @PY.TOP_CMD
 async def reminder(client, message):
-    prefix = await get_prefix(client.me.id)
     if len(message.command) == 1 or len(message.command) == 2:
         await message.reply(f"Penggunaan: `remind <waktu> <pesan>`\n\nContoh:\n`{next((p) for p in prefix)}remind 1j30m Beli susu`\n`{next((p) for p in prefix)}remind 1h30m Cek email`")
     else:
