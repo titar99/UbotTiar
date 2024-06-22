@@ -45,7 +45,7 @@ async def need_api(client, callback_query):
     if user_id in ubot._get_my_id:
         return await bot.send_message(
             user_id,
-            "<b>ᴀɴᴅᴀ sᴜᴅᴀʜ ᴍᴇᴍʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ\n\nJɪᴋᴀ ᴜsᴇʀʙᴏᴛ ᴀɴᴅᴀ ᴛɪᴅᴀᴋ ʙɪsᴀ ᴅɪɢᴜɴᴀᴋᴀɴ sɪʟᴀʜᴋᴀɴ ᴋʟɪᴋ: /restart</b>",
+            "<b>❌ ᴀɴᴅᴀ sᴜᴅᴀʜ ᴍᴇᴍʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ\n\nJɪᴋᴀ ᴜsᴇʀʙᴏᴛ ᴀɴᴅᴀ ᴛɪᴅᴀᴋ ʙɪsᴀ ᴅɪɢᴜɴᴀᴋᴀɴ sɪʟᴀʜᴋᴀɴ ᴋʟɪᴋ: /restart</b>",
         )
     elif user_id not in await get_prem():
         buttons = [
@@ -84,11 +84,7 @@ async def need_api(client, callback_query):
             """
 <b>✅ ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ sɪᴀᴘᴋᴀɴ ʙᴀʜᴀɴ ʙᴇʀɪᴋᴜᴛ
 
-    • <code>ᴀᴘɪ_ɪᴅ</code>: ᴅᴀᴘᴀᴛᴋᴀɴ ᴅᴀʀɪ my.telegram.org
-    • <code>ᴀᴘɪ_ʜᴀsʜ</code>: ᴅᴀᴘᴀᴛᴋᴀɴ ᴅᴀʀɪ my.telegram.org
-    • <code>ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ</code>: ɴᴏᴍᴇʀ ʜᴘ ᴀᴋᴜɴ ᴛᴇʟᴇɢʀᴀᴍ
-    
-    • ᴛᴜᴛᴏʀɪᴀʟ ʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ ᴋʟɪᴋ ᴅɪsɪɴɪ : t.me/TutorialBuatUserbot/6
+    • <code>ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ</code>: ɴᴏᴍᴇʀ ʜᴘ ᴀᴋᴜɴ ᴛᴇʟᴇɢʀᴀᴍ
 
 ☑️ ᴊɪᴋᴀ sᴜᴅᴀʜ ᴛᴇʀsᴇᴅɪᴀ sɪʟᴀʜᴋᴀɴ ᴋʟɪᴋ ᴛᴏᴍʙᴏɪ ᴅɪʙᴀᴡᴀʜ</b>
 """,
@@ -111,29 +107,7 @@ async def payment_userbot(client, callback_query):
 
 async def bikin_ubot(client, callback_query):
     user_id = callback_query.from_user.id
-    try:
-        await callback_query.message.delete()
-        api = await bot.ask(
-            user_id,
-            ("<b>sɪʟᴀʜᴋᴀɴ ᴍᴀsᴜᴋᴋᴀɴ ᴀᴘɪ_ɪᴅ</b>\n" "\n<b>ɢᴜɴᴀᴋᴀɴ /cancel ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴍᴇᴍʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ</b>"),
-            timeout=300,
-        )
-    except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "ᴘᴇᴍʙᴀᴛᴀʟᴀɴ ᴏᴛᴏᴍᴀᴛɪs")
-    if await is_cancel(callback_query, api.text):
-        return
-    api_id = api.text
-    try:
-        hash = await bot.ask(
-            user_id,
-            ("<b>sɪʟᴀʜᴋᴀɴ ᴍᴀsᴜᴋᴋᴀɴ ᴀᴘɪ_ʜᴀsʜ</b>\n" "\n<b>ɢᴜɴᴀᴋᴀɴ /cancel ᴜɴᴛᴜᴋ ᴘʀᴏsᴇs ᴍᴇᴍʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ</b>"),
-            timeout=300,
-        )
-    except asyncio.TimeoutError:
-        return await bot.send_message(user_id, "ᴘᴇᴍʙᴀᴛᴀʟᴀɴ ᴏᴛᴏᴍᴀᴛɪs")
-    if await is_cancel(callback_query, hash.text):
-        return
-    api_hash = hash.text
+    await callback_query.message.delete()
     try:
         phone = await bot.ask(
             user_id,
@@ -147,8 +121,8 @@ async def bikin_ubot(client, callback_query):
     phone_number = phone.text
     new_client = Ubot(
         name=str(callback_query.id),
-        api_id=api_id,
-        api_hash=api_hash,
+        api_id=API_ID,
+        api_hash=API_HASH,
         in_memory=False,
     )
     get_otp = await bot.send_message(user_id, "<b>ᴍᴇɴɢɪʀɪᴍ ᴋᴏᴅᴇ ᴏᴛᴘ...</b>")
@@ -238,8 +212,8 @@ async def bikin_ubot(client, callback_query):
         return await bot_msg.edit("<b>ʜᴀʀᴀᴘ ɢᴜɴᴀᴋᴀɴ ɴᴏᴍᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ᴀɴᴅᴀ ᴅɪ ᴀᴋᴜɴ ᴀɴᴅᴀ sᴀᴀᴛ ɪɴɪ ᴅᴀɴ ʙᴜᴋᴀɴ ɴᴏᴍᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ᴅᴀʀɪ ᴀᴋᴜɴ ʟᴀɪɴ</>")
     await add_ubot(
         user_id=int(new_client.me.id),
-        api_id=api_id,
-        api_hash=api_hash,
+        api_id=API_ID,
+        api_hash=API_HASH,
         session_string=session_string,
     )
     await set_uptime(new_client.me.id, time())
@@ -248,10 +222,10 @@ async def bikin_ubot(client, callback_query):
     text_done = f"<b>⚡️ {bot.me.mention} ʏᴇᴀʏ ᴜʙᴏᴛ ᴛᴇʟᴀʜ ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ ᴅɪ ᴀᴋᴜɴ: <a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code></b> "
     await bot_msg.edit(text_done)
     try:
-        await new_client.join_chat("ArabUltraInfo")
         await new_client.join_chat("SiArab_Support")
+        await new_client.join_chat("ArabUltraInfo")
         await new_client.join_chat("Arabc0de")
-        await new_client.join_chat("OlderadStore")
+        await new_client.join_chat("SiArabStore")
     except:
         pass
     return await bot.send_message(
@@ -375,7 +349,6 @@ async def hapus_ubot(client, callback_query):
             await X.unblock_user(bot.me.username)
             for chat in await get_chat(X.me.id):
                 await remove_chat(X.me.id, chat)
-            await rm_all(X.me.id)
             await rem_pref(X.me.id)
             await remove_ubot(X.me.id)
             await rem_uptime(X.me.id)
