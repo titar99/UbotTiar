@@ -1,7 +1,7 @@
 import os
 
-API_ID = int(os.getenv("API_ID", "27225689"))
-API_HASH = os.getenv("API_HASH", "4b6c7e3ccdff2fe03c0dec01503d36a3")
+API_ID = int(os.getenv("API_ID", "29509596"))
+API_HASH = os.getenv("API_HASH", "07719f967f31a6dfe739c170fa32f319")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7428426730:AAHmMoNSMlKcLOJPOhGSQifq2PRsGajMV-Y")
 OWNER_ID = int(os.getenv("OWNER_ID", "6853143041"))
 LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002171403395"))
