@@ -3,7 +3,7 @@ import os
 API_ID = int(os.getenv("API_ID", "27225689"))
 API_HASH = os.getenv("API_HASH", "4b6c7e3ccdff2fe03c0dec01503d36a3")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7428426730:AAHmMoNSMlKcLOJPOhGSQifq2PRsGajMV-Y")
-OWNER_ID = int(os.getenv("OWNER_ID", "7126620318"))
+OWNER_ID = int(os.getenv("OWNER_ID", "6853143041"))
 LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002171403395"))
 BLACKLIST_CHAT = list(map(int, os.getenv("BLACKLIST_CHAT", "-1001969856888 -1001571197486").split()))
 MAX_BOT = int(os.getenv("MAX_BOT", "40"))
