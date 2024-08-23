@@ -155,8 +155,8 @@ async def _(client, message):
 
 
 async def create_logs(client):
-    logs = await client.create_channel(f"ʟᴏɢs sɪ ᴀʀᴀʙ ᴜʙᴏᴛ")
-    url = wget.download("https://telegra.ph//file/ea39b52686ec35ed9950a.jpg")
+    logs = await client.create_channel(f"Logs Vina Ubot")
+    url = wget.download("https://telegra.ph//file/de7952cbf7ec2f91602bc.jpg")
     photo_video = {"video": url} if url.endswith(".mp4") else {"photo": url}
     await client.set_chat_photo(
         logs.id,
