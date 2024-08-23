@@ -1,4 +1,4 @@
-pyrogram
+git+https://github.com/naya1503/mypyrogram
 tgcrypto
 pytz
 psutil
@@ -21,7 +21,7 @@ aiohttp
 gpytranslate
 gtts
 telegraph
-pyromod==1.1
+pyromod==1.5
 youtube-search-python
 pymongo
 yt-dlp
