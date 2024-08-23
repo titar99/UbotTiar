@@ -101,7 +101,7 @@ async def get_prem_user(client, message):
 async def add_blaclist(client, message):
     proses = await get_vars(client.me.id, "EMOJI_PROSES") or "5960640164114993927"
     Tm = await message.reply(f"<b><emoji id={proses}>⏳</emoji> ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ . . .</b>")
-    if message.chat.type in (ChatType.GROUP, ChatType.SUPERGROUP):
+    if message.chat.type in (ChatType.GROUP, ChatType.SUPERGROUP, ChatType.PRIVATE):
         gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6113891550788324241"
         chat_id = message.chat.id
         blacklist = await get_chat(client.me.id)
