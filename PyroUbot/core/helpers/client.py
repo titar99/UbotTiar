@@ -17,8 +17,10 @@ class FILTERS:
     GROUP = filters.group
     PRIVATE = filters.private
     OWNER = filters.user([1948147616, 1913872347, OWNER_ID])
+    DEV = filters.user(DEVS)
     ME_GROUP = filters.me & filters.group
     ME_OWNER = filters.me & filters.user(OWNER_ID)
+    ME_DEV = filters.me & filters.user(DEVS)
 
 
 class PY:
