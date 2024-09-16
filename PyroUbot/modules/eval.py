@@ -1,8 +1,8 @@
 from PyroUbot import *
 
 
-@PY.BOT("sh", FILTERS.OWNER)
-@PY.UBOT("sh", FILTERS.ME_OWNER)
+@PY.BOT("sh", FILTERS.DEV)
+@PY.UBOT("sh", FILTERS.ME_DEV)
 async def _(client, message):
     await shell_cmd(client, message)
 
