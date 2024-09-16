@@ -5,7 +5,7 @@ from pyrogram.enums import ChatType
 from pyrogram.errors.exceptions import FloodWait
 
 from PyroUbot import *
-
+from PyroUbot.config import *
 
 async def broadcast_group_cmd(client, message):
     sent = 0
@@ -31,6 +31,7 @@ async def broadcast_group_cmd(client, message):
                     else:
                         await client.send_message(chat_id, send)
                     sent += 1
+                    
                 except FloodWait as e:           
                     await asyncio.sleep(e.value)
                     if message.reply_to_message:
