@@ -55,35 +55,38 @@ async def broadcast_users_cmd(client, message):
     proses = await get_vars(client.me.id, "EMOJI_PROSES") or "5960640164114993927"
     msg = await message.reply(f"<emoji id={proses}>⏳</emoji> ꜱᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏꜱᴇꜱ ᴜᴄᴀꜱᴛ...")
     async for dialog in client.get_dialogs(limit=None):
-    if dialog.chat.type == ChatType.PRIVATE:
-        if message.reply_to_message:
-            send = message.reply_to_message
-        else:
-            if len(message.command) < 2:
-                await msg.delete()
-                gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
-                return await message.reply(f"<emoji id={gagal}>❎</emoji> ᴇʀᴏʀʀ!! ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ")
-            else:
-                send = message.text.split(None, 1)[1]
-        
-        chat_id = dialog.chat.id
-        
-        try:
+        if dialog.chat.type in (ChatType.PRIVATE):  
             if message.reply_to_message:
-                await send.copy(chat_id)
+                send = message.reply_to_message
             else:
-                await client.send_message(chat_id, send)
-            sent += 1
-        except FloodWait as e:
-            await asyncio.sleep(e.value)
-            if message.reply_to_message:
-                await send.copy(chat_id)
-            else:
-                await client.send_message(chat_id, send)
-            sent += 1
-        except Exception:
-            failed += 1
-            pass
+                if len(message.command) < 2:
+                    await message.delete()
+                    gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
+                    return await message.reply(f"<emoji id={gagal}>❎</emoji> ᴇʀᴏʀʀ!! ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ")
+                else:
+                    send = message.text.split(None, 1)[1]
+            
+            chat_id = dialog.chat.id
+            
+            try:
+                if message.reply_to_message:
+                    await send.copy(chat_id)
+                else:
+                    await client.send_message(chat_id, send)
+                sent += 1
+            except FloodWait as e:
+                await asyncio.sleep(e.x)  # Use e.x for Pyrogram
+                try:
+                    if message.reply_to_message:
+                        await send.copy(chat_id)
+                    else:
+                        await client.send_message(chat_id, send)
+                    sent += 1
+                except Exception:
+                    failed += 1
+            except Exception:
+                failed += 1
+                
                    
     await msg.delete()
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
