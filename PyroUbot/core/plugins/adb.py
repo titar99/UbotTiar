@@ -222,9 +222,9 @@ async def bikin_ubot(client, callback_query):
     text_done = f"<b>⚡️ {bot.me.mention} ʏᴇᴀʏ ᴜʙᴏᴛ ᴛᴇʟᴀʜ ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ ᴅɪ ᴀᴋᴜɴ: <a href=tg://openmessage?user_id={new_client.me.id}>{new_client.me.first_name} {new_client.me.last_name or ''}</a> > <code>{new_client.me.id}</code></b> "
     await bot_msg.edit(text_done)
     try:
-        await new_client.join_chat("chanelbotvina")
-        await new_client.join_chat("grupvina")
-        await new_client.join_chat("ptvina")
+        await new_client.join_chat("cuannyaraxxy")
+        await new_client.join_chat("grupptvina")
+        await new_client.join_chat("grupbotvina")
     except:
         pass
     return await bot.send_message(
