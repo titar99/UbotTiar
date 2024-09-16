@@ -2,6 +2,7 @@ import asyncio
 from gc import get_objects
 
 from pyrogram.enums import ChatType
+from pyrogram.errors.exceptions import FloodWait
 
 from PyroUbot import *
 
@@ -30,9 +31,17 @@ async def broadcast_group_cmd(client, message):
                     else:
                         await client.send_message(chat_id, send)
                     sent += 1
-                    await asyncio.sleep(2)
+                except FloodWait as e:           
+                    await asyncio.sleep(e.value)
+                    if message.reply_to_message:
+                        await send.copy_message(chat_id)
+                    else:
+                        await client.send_message(chat_id, send)
+                    sent += 1   
                 except Exception:
                     failed += 1
+                    pass
+                    
     await msg.delete()
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
     sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "5787188704434982946"
@@ -63,9 +72,17 @@ async def broadcast_users_cmd(client, message):
                 else:
                     await client.send_message(chat_id, send)
                 sent += 1
-                await asyncio.sleep(3)
-            except Exception:
-                failed += 1
+                except FloodWait as e:           
+                    await asyncio.sleep(e.value)
+                    if message.reply_to_message:
+                        await send.copy_message(chat_id)
+                    else:
+                        await client.send_message(chat_id, send)
+                    sent += 1   
+                except Exception:
+                    failed += 1
+                    pass
+                    
     await msg.delete()
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
     sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "5787188704434982946"
