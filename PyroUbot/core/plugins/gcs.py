@@ -12,7 +12,15 @@ async def broadcast_group_cmd(client, message):
     failed = 0
     proses = await get_vars(client.me.id, "EMOJI_PROSES") or "5960640164114993927"
     msg = await message.reply(f"<emoji id={proses}>⏳</emoji> ꜱᴇᴅᴀɴɢ ᴍᴇᴍᴘʀᴏꜱᴇꜱ ɢɪᴋᴇꜱ....")
+    
+    blacklist = await get_chat(client.me.id)   
+
     async for dialog in client.get_dialogs(limit=None):
+        chat_id = dialog.chat.id
+        
+        if chat_id in blacklist or chat_id in BLACKLIST_CHAT:
+            continue
+            
         if dialog.chat.type in (ChatType.GROUP, ChatType.SUPERGROUP):
             if message.reply_to_message:
                 send = message.reply_to_message
@@ -23,7 +31,7 @@ async def broadcast_group_cmd(client, message):
                     return await message.reply(f"<emoji id={gagal}>❎</emoji> ᴇʀᴏʀʀ!! ᴍᴏʜᴏɴ ʙᴀʟᴀs sᴇsᴜᴀᴛᴜ ᴀᴛᴀᴜ ᴋᴇᴛɪᴋ sᴇsᴜᴀᴛᴜ")
                 else:
                     send = message.text.split(None, 1)[1]
-            chat_id = dialog.chat.id
+
             if chat_id not in await get_chat(client.me.id):
                 try:
                     if message.reply_to_message:
@@ -33,15 +41,18 @@ async def broadcast_group_cmd(client, message):
                     sent += 1                 
                 except FloodWait as e:           
                     await asyncio.sleep(e.value)
-                    if message.reply_to_message:
-                        await send.copy(chat_id)
-                    else:
-                        await client.send_message(chat_id, send)
-                    sent += 1   
+                    try:
+                        if message.reply_to_message:
+                            await send.copy(chat_id)
+                        else:
+                            await client.send_message(chat_id, send)
+                        sent += 1
+                    except Exception:
+                        failed += 1
                 except Exception:
                     failed += 1
                     pass
-                    
+
     await msg.delete()
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "5438630285635757876"
     sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "5787188704434982946"
@@ -152,4 +163,4 @@ async def send_inline(client, inline_query):
                 )
             )
         ],
-    )
+                )
