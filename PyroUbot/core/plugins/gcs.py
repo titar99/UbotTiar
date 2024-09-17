@@ -34,7 +34,7 @@ async def broadcast_group_cmd(client, message):
                 except FloodWait as e:           
                     await asyncio.sleep(e.value)
                     if message.reply_to_message:
-                        await send.copy_message(chat_id)
+                        await send.copy(chat_id)
                     else:
                         await client.send_message(chat_id, send)
                     sent += 1   
