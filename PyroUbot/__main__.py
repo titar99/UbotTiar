@@ -12,7 +12,6 @@ async def start_ubot(user_id, _ubot):
     try:
         await asyncio.wait_for(ubot_.start(), timeout=10)
         await ubot_.join_chat("GfamsSupport")
-        await ubot_.join_chat("suportvina3")
     except asyncio.TimeoutError:
         await remove_ubot(user_id)
         await add_prem(user_id)
